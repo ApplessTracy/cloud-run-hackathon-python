@@ -24,8 +24,11 @@ logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 moves = ['F', 'T', 'L', 'R']
-
 mylink = 'https://cloud-run-hackathon-python-ev2hwn2rma-uc.a.run.app'
+playerUrl = []
+playerDetail = []
+playerX = []
+playerY = []
 
 @app.route("/", methods=['GET'])
 def index():
@@ -39,12 +42,28 @@ def move():
 
     data = request.json
     
+    myX = data['dims'][0]
+    myY = data['dims'][1]
     isState = data['arena']['state'][mylink]['wasHit']
+    tempKey = []
+    tempValue = []
+
+    playerLocation = data['state']
+    for key, value in playerLocation.items():
+        tempKey = [key]
+        tempValue = [value]
+        playerUrl.append(tempKey)
+        playerDetail.append(tempValue)
+        playerX.append(tempValue[0]['x'])
+        playerY.append(tempValue[0]['y'])
     
-    if isState:
+    
+    
+    
+    if isState :
         isRun = True
         return moves[3]
-    elif isRun == True:
+    elif isRun == True and isState == True:
         isRun = False
         return moves[0]
     else:
