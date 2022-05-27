@@ -36,7 +36,6 @@ def index():
 
 @app.route("/", methods=['POST'])
 def move():
-    isRun = False
     request.get_data()
     logger.info(request.json)
 
@@ -57,17 +56,12 @@ def move():
         playerX.append(tempValue[0]['x'])
         playerY.append(tempValue[0]['y'])
     
-    
-    
-    
-    if isState :
-        isRun = True
-        return moves[3]
-    elif isRun == True and isState == True:
-        isRun = False
-        return moves[0]
-    else:
-        return moves[random.randrange(len(moves))]
+    for i in range(len(playerX)):
+        if playerY == myY:
+            if playerX[i] < myX and myX-3 <= playerX[i]:
+                return moves[0]
+        else:
+            return moves[random.randrange(len(moves))]
 
 
 if __name__ == "__main__":
