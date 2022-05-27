@@ -63,9 +63,7 @@ def move():
             return moves[random.randrange(len(moves))]
         if (playerY[i] < myY and myY-3 <= playerY[i]) or (myY < playerY[i] and playerY[i] <= myY-3):
             if playerX[i] < myX and myX-3 <= playerX[i]:
-                if isHit:
-                    if myFace == 'W':
-                        return moves[random.randrange(len(moves))]
+                
                 if myFace == 'W':
                     return moves[0]
                 else:
