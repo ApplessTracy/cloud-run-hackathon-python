@@ -34,8 +34,6 @@ def move():
     request.get_data()
     logger.info(request.json)
 
-    resquest_data = json.loads(request.json)
-    
 
     return moves[random.randrange(len(moves))]
 
