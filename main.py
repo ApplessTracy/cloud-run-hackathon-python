@@ -82,7 +82,7 @@ def move():
                     return moves[0]
 
         else:
-            return moves[random.randrange(2,4)]
+            return moves[random.randrange(1,4)]
 
 
 if __name__ == "__main__":
