@@ -61,22 +61,16 @@ def move():
     for i in range(len(playerX)):
         if isHit:
             return moves[random.randrange(len(moves))]
-        if (playerY[i] < myY and myY-3 <= playerY[i]):
-            if myFace == 'S':
-                return moves[0]
-            else:
-                return moves[2]
-        elif (myY < playerY[i] and playerY[i] <= myY-3):
-            if myFace == 'N':
-                return moves[0]
-            else:
-                 return moves[2]
-        elif playerX[i] < myX and myX-3 <= playerX[i]:
+        if (playerY[i] < myY and myY-3 <= playerY[i]) or (myY < playerY[i] and playerY[i] <= myY-3):
+            if playerX[i] < myX and myX-3 <= playerX[i]:
+                if isHit:
+                    if myFace == 'W':
+                        return moves[random.randrange(len(moves))]
                 if myFace == 'W':
                     return moves[0]
                 else:
                     return moves[2]
-        elif myX < playerX[i] and playerX[i] <= myX-3:
+            elif myX < playerX[i] and playerX[i] <= myX-3:
                 if myFace == 'E':
                     return moves[0]
                 else:
