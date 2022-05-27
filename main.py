@@ -68,8 +68,7 @@ def move():
                     return moves[3]
                 else:
                     return moves[0]
-        
-        if playerX == myX:
+        elif playerX == myX:
             if playerY[i] < myY and myY-3 <= playerY[i]:
                 if myFace != 'S':
                     return moves[3]
@@ -80,7 +79,6 @@ def move():
                     return moves[3]
                 else:
                     return moves[0]
-
         else:
             return moves[random.randrange(1,4)]
 
