@@ -42,8 +42,8 @@ def move():
 
     data = request.json
     
-    myX = data['dims'][0]
-    myY = data['dims'][1]
+    myX = data['arena']['dims'][0]
+    myY = data['arena']['dims'][1]
     isState = data['arena']['state'][mylink]['wasHit']
     tempKey = []
     tempValue = []
