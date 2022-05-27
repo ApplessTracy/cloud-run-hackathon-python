@@ -37,8 +37,7 @@ def move():
     request.get_data()
     logger.info(request.json)
 
-    json = request.json
-    data = json.loads(json)
+    data = request.json
     
     isState = data['arena']['state'][mylink]['wasHit']
     
