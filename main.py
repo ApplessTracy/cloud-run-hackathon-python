@@ -25,18 +25,31 @@ logger = logging.getLogger(__name__)
 app = Flask(__name__)
 moves = ['F', 'T', 'L', 'R']
 
+mylink = 'https://cloud-run-hackathon-python-ev2hwn2rma-uc.a.run.app'
+
 @app.route("/", methods=['GET'])
 def index():
     return "Let the battle begin!"
 
 @app.route("/", methods=['POST'])
 def move():
+    isRun = False
     request.get_data()
+    logger.info(request.json)
 
-    data = request.json
-    logger.info(data)
+    data = json.loads(request.json)
+    
+    isState = data['arena']['state'][mylink]['wasHit']
+    
+    if isState:
+        isRun = True
+        return moves[3]
+    elif isRun == True:
+        isRun = False
+        return moves[0]
+    else:
+        return moves[random.randrange(len(moves))]
 
-    return moves[random.randrange(len(moves))]
 
 if __name__ == "__main__":
   app.run(debug=False,host='0.0.0.0',port=int(os.environ.get('PORT', 8080)))
