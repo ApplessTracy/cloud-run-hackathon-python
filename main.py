@@ -57,24 +57,28 @@ def move():
         playerDetail.append(tempValue)
         playerX.append(tempValue[0]['x'])
         playerY.append(tempValue[0]['y'])
-    
+        
     for i in range(len(playerX)):
-        if isHit:
-            return moves[random.randrange(len(moves))]
-        if (playerY[i] < myY and myY-3 <= playerY[i]) or (myY < playerY[i] and playerY[i] <= myY-3):
-            if playerX[i] < myX and myX-3 <= playerX[i]:
+            if isHit:
+                return moves[random.randrange(len(moves))]
                 
-                if myFace == 'W':
-                    return moves[0]
+            if playerY == myY:
+                if playerX[i] < myX and myX-3 <= playerX[i]:
+                    
+                    if myFace == 'W':
+                        return moves[0]
+                    else:
+                        return moves[2]
+                elif myX < playerX[i] and playerX[i] <= myX-3:
+                    if myFace == 'E':
+                        return moves[0]
+                    else:
+                        return moves[3]
                 else:
-                    return moves[2]
-            elif myX < playerX[i] and playerX[i] <= myX-3:
-                if myFace == 'E':
-                    return moves[0]
-                else:
-                    return moves[3]
-        else:
-            return moves[random.randrange(len(moves))]
+                    return moves[random.randrange(len(moves))]
+            else:
+                return moves[random.randrange(len(moves))]
+
 
 
 if __name__ == "__main__":
