@@ -48,7 +48,7 @@ def move():
     tempKey = []
     tempValue = []
 
-    playerLocation = data['state']
+    playerLocation = data['arena']['state']
     for key, value in playerLocation.items():
         tempKey = [key]
         tempValue = [value]
