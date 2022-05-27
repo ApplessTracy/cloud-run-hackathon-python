@@ -83,10 +83,7 @@ def move():
                 else:
                     return moves[0]
         else:
-            if myFace != 'W' or myFace != 'N':
-                return moves[2]
-            else:
-                return moves[0]
+            return moves[random.randrange(len(moves))]
 
 
 if __name__ == "__main__":
