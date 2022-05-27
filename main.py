@@ -44,6 +44,7 @@ def move():
     myX = data['arena']['dims'][0]
     myY = data['arena']['dims'][1]
     myFace = data['arena']['state'][mylink]['direction']
+    isHit = data['arena']['state'][mylink]['wasHit']
     tempKey = []
     tempValue = []
 
@@ -57,6 +58,8 @@ def move():
         playerY.append(tempValue[0]['y'])
     
     for i in range(len(playerX)):
+        if isHit:
+            return moves[random.randrange(len(moves))]
         if playerY == myY:
             if playerX[i] < myX and myX-3 <= playerX[i]:
                 if myFace != 'W':
